@@ -1,0 +1,23 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { deobfuscate } from "../src/deobfuscator.js";
+
+function removeNewLinesAndTabs(pieceOfCode) {
+  return pieceOfCode.split("\n").join(" ").split("  ").join("");
+}
+
+test("default obfuscator.io obfuscation code", () => {
+  const obfuscatedCode = `function _0x5c3a(_0x73bcac,_0x3eaf2c){var _0x4ca6c3=_0x4ca6();return _0x5c3a=function(_0x5c3a64,_0xf213ba){_0x5c3a64=_0x5c3a64-0xfa;var _0x22e829=_0x4ca6c3[_0x5c3a64];return _0x22e829;},_0x5c3a(_0x73bcac,_0x3eaf2c);}function _0x4ca6(){var _0xafd126=['Hello\x20World!','108YPqIGq','7511126ZfvoqW','6khMWvU','281230BIIidb','1571288EqRSMn','4837632qqOTDp','log','40507xhusRN','1753610ZieNmY','10096DLzDUV','48wMkzWr'];_0x4ca6=function(){return _0xafd126;};return _0x4ca6();}(function(_0x52cb11,_0x394484){var _0xdf0fe9=_0x5c3a,_0xfc2361=_0x52cb11();while(!![]){try{var _0x3672ac=-parseInt(_0xdf0fe9(0xfb))/0x1*(-parseInt(_0xdf0fe9(0x102))/0x2)+parseInt(_0xdf0fe9(0xfe))/0x3*(parseInt(_0xdf0fe9(0xfd))/0x4)+parseInt(_0xdf0fe9(0xfc))/0x5+-parseInt(_0xdf0fe9(0x105))/0x6+parseInt(_0xdf0fe9(0x101))/0x7+parseInt(_0xdf0fe9(0x104))/0x8+-parseInt(_0xdf0fe9(0x100))/0x9*(parseInt(_0xdf0fe9(0x103))/0xa);if(_0x3672ac===_0x394484)break;else _0xfc2361['push'](_0xfc2361['shift']());}catch(_0x4a7d1d){_0xfc2361['push'](_0xfc2361['shift']());}}}(_0x4ca6,0x9bd64));function hi(){var _0x31e49e=_0x5c3a;console[_0x31e49e(0xfa)](_0x31e49e(0xff));}hi();`;
+  assert.strictEqual(
+    removeNewLinesAndTabs(deobfuscate(obfuscatedCode)),
+    `function hi() { console.log("Hello World!"); } hi();`
+  );
+});
+
+test("incremental sums using a for loop", () => {
+  const obfuscatedCode = `function _0x12b4(){const _0x20850d=['31196ezWbSr','3591GxaeFH','184HRjihj','6JfgooB','48156PnwCnM','16IttHUh','100952MkxqbQ','5564xunGHM','7006nhCQVW','1380150tIhQOT','2928645tFwycH','9708TCoXxi','430HSOyFn'];_0x12b4=function(){return _0x20850d;};return _0x12b4();}function _0x12e0(_0x503bc5,_0xe6de18){const _0x12b418=_0x12b4();return _0x12e0=function(_0x12e019,_0x50e0d4){_0x12e019=_0x12e019-0x1cc;let _0x3ab137=_0x12b418[_0x12e019];return _0x3ab137;},_0x12e0(_0x503bc5,_0xe6de18);}(function(_0x3611c4,_0x2e0eff){const _0x366e51=_0x12e0,_0x1e92a2=_0x3611c4();while(!![]){try{const _0x4ae430=-parseInt(_0x366e51(0x1d0))/0x1*(parseInt(_0x366e51(0x1d7))/0x2)+-parseInt(_0x366e51(0x1d8))/0x3*(-parseInt(_0x366e51(0x1ce))/0x4)+-parseInt(_0x366e51(0x1d1))/0x5+parseInt(_0x366e51(0x1d3))/0x6*(-parseInt(_0x366e51(0x1d6))/0x7)+parseInt(_0x366e51(0x1cd))/0x8*(parseInt(_0x366e51(0x1d2))/0x9)+parseInt(_0x366e51(0x1d4))/0xa*(-parseInt(_0x366e51(0x1d5))/0xb)+-parseInt(_0x366e51(0x1cc))/0xc*(-parseInt(_0x366e51(0x1cf))/0xd);if(_0x4ae430===_0x2e0eff)break;else _0x1e92a2['push'](_0x1e92a2['shift']());}catch(_0x3521fd){_0x1e92a2['push'](_0x1e92a2['shift']());}}}(_0x12b4,0x855ee));let sum=0x0;for(let i=0x0;i<0xa;i++){sum+=i;}console['log'](sum);`;
+  assert.strictEqual(
+    removeNewLinesAndTabs(deobfuscate(obfuscatedCode)),
+    `let sum = 0; for (let i = 0; i < 10; i++) { sum += i; } console.log(sum);`
+  );
+});
