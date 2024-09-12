@@ -1,5 +1,5 @@
 {
-  "name": "obfuscator-io-deobfuscation",
+  "name": "obf-io-deobfuscation",
   "version": "1.0.0",
   "description": "deobfuscator for obfuscator.io obfuscated code",
   "main": "src/main.js",

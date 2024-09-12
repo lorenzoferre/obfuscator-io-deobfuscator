@@ -1,4 +1,4 @@
-![](https://github.com/lorenzoferre/obfuscator-io-deobfuscator/actions/workflows/ci.yml/badge.svg)
+![](https://github.com/lorenzoferre/obf-io-deobfuscator/actions/workflows/ci.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Obfuscator.io deobfuscator
@@ -6,18 +6,18 @@ Deobfuscate the obfuscated code from [obfuscator.io](https://obfuscator.io) usin
 # Usage
 First of all you need to install the package:
 ```
-npm i obfuscator-io-deobfuscator
+npm i obf-io-deobfuscator
 ```
 Then you import the deobfuscation function into your module which takes the obfuscated code as input:
 ```javascript
-import deobfuscate from "obfuscator-io-deobfuscator";
+import deobfuscate from "obf-io-deobfuscator";
 const code = `` // insert the obfuscated code from obfuscator.io here
 const deobfuscatedCode = deobfuscate(code)
 console.log(deobfuscatedCode)
 ```
 Or if you want to use a file as input:
 ```javascript
-import deobfuscate from "obfuscator-io-deobfuscator";
+import deobfuscate from "obf-io-deobfuscator";
 import fs from "fs";
 
 const path = ""; // insert the file path
@@ -27,7 +27,7 @@ console.log(deobfuscatedCode)
 ```
 # Example
 ```javascript
-import deobfuscate from "obfuscator-io-deobfuscator";
+import deobfuscate from "obf-io-deobfuscator";
 const code = `
 function _0x11ae(_0x4b29f4, _0x2d1895) {
   const _0xc5911f = _0xc591();
